@@ -1,0 +1,8 @@
+{"level":"info","message":"/api/products --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=10&userID=2&rating=4.5& --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=2&rating=4.5& --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
