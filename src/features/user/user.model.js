@@ -1,18 +1,30 @@
+import { getDB } from "../../config/mongodb.js";
+import ApplicationError from "../../error-handler/applicationError.js";
+
 export default class UserModel{
-    constructor(name, email, password, type){
+    constructor(name, email, password, type, id){
         this.name = name;
         this.email = email;
         this.password = password;
         this.type = type;
+        this._id = id;
     }
 
     //Sign Up method
-    static signUp(name, email, password, type){
-        const newUser = new UserModel(name, email, password, type);
-        newUser.id = users.length + 1;
-        users.push(newUser);
+    static async signUp(name, email, password, type){
+        try{
+            const newUser = new UserModel(name, email, password, type);
+            // 1. Get the DB
+            const db = getDB();
+            // 2. get the DB collection
+            const collection = db.collection("user");
 
-        return newUser;
+            // 3. Insert the Document
+            await collection.insertOne(newUser);
+            return newUser;
+        }catch(err){
+            throw new Error(err);
+        }
     }
 
     // Sign in method

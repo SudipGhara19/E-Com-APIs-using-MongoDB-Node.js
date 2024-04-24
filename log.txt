@@ -6,3 +6,5 @@
 {"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/products/rate?productID=1&userID=7&rating=4.5& --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/users/signup --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/users/signup --- undefined","service":"request-logging"}
