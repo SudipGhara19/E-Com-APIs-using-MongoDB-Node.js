@@ -38,7 +38,7 @@ export default class UserController{
 
                 // if user sign in create token
                 if(result){
-                    const token = jwt.sign({userID: user.id, email: user.email}, "ZrfSDXbpd2Q5eyDtPj5VBUOCpHDHi0Re", {
+                    const token = jwt.sign({userID: user.id, email: user.email}, process.env.JWT_SECRET , {
                         expiresIn: '7d',
                     });
                     // if password is correct Signin successfully
