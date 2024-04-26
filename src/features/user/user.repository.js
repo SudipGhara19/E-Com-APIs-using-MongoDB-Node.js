@@ -34,6 +34,22 @@ class UserRepository{
             throw new ApplicationError("Something went wrong in database.");
         }
     }
+
+
+    async findByEmail(email){
+        try{
+            // 1. Get the DB
+            const db = getDB();
+            // 2. get the DB collection
+            const collection = db.collection("user");
+
+            // 3. Find the Document
+           return await collection.findOne({email});
+        }catch(err){
+            console.log(err);
+            throw new ApplicationError("Something went wrong in database.");
+        }
+    }
 }
 
 export default UserRepository;
