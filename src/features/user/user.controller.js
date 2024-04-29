@@ -24,29 +24,37 @@ export default class UserController{
         }
     }
 
-    async signIn(req, res, next){
+    async signIn(req, res){
         try{
-            const {email, password} = req.body;
-
-            const user = await this.userRepository.findByEmail(email);
-            if(!user){
-                // 1. Find the user by Email.
-                return res.status(400).send("Incorrect credentials.")
-            }else{
-                // 2. comapare the input Password with Hash-Pasword
-                const result = await bcrypt.compare(password, user.password);
-
-                // if user sign in create token
-                if(result){
-                    const token = jwt.sign({userID: user.id, email: user.email}, process.env.JWT_SECRET , {
-                        expiresIn: '7d',
-                    });
-                    // if password is correct Signin successfully
-                    return res.status(200).send(token);
-                }else{
-                    return res.status(400).send("Incorrect Credentials.")
-                }
+            // 1. Find user by email.
+      const user = await this.userRepository.findByEmail(req.body.email);
+      if(!user){
+        return res
+        .status(400)
+        .send('Incorrect Credentials');
+      } else {
+        // 2. Compare password password with hashed password.
+        const result = await bcrypt.compare(req.body.password, user.password);
+        if(result){
+  // 3. Create token.
+          const token = jwt.sign(
+            {
+              userID: user._id,
+              email: user.email,
+            },
+            process.env.JWT_SECRET,
+            {
+              expiresIn: '7d',
             }
+          );
+      // 4. Send token.
+      return res.status(200).send(token);
+        } else {
+          return res
+        .status(400)
+        .send('Incorrect Credentials');
+        }
+      }
         }catch(err){
             console.log(err);
             return  res.status(500).send("Something went wrong.");

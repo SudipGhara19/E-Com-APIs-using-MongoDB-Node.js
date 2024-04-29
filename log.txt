@@ -19,3 +19,10 @@
 {"level":"info","message":"/api/products --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/products/662cdcb6b75ede54fcbd455c --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/products --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/filter?minPrice=700 --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/filter?minPrice=700&maxPrice=1000 --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/filter?category=category --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/users/signup --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/users/signup --- undefined","service":"request-logging"}

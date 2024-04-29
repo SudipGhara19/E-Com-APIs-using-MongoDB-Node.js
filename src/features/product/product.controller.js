@@ -39,18 +39,19 @@ export default class ProductController{
         }
     }
 
-    rateProduct(req,res){
-        const userID = req.query.userID;
-        const productID = req.query.productID;
-        const rating = req.queryfd.rating;
-
+    async rateProduct(req,res){
         try{
-            ProductModel.rateProduct(userID, productID, rating);
+        const userID = req.userID;
+        const productID = req.body.productID;
+        const rating = req.body.rating;
+
+            await this.productRepositary.rate(userID, productID, rating);
+            return res.status(200).send("Rating send succefully!");
         }catch(err){
             return res.status(400).send(err.message);
         }
         
-        return res.status(200).send("Rating send succefully!");
+        
         
     }
 
@@ -70,16 +71,22 @@ export default class ProductController{
         }
     }
 
-    filterProducts(req, res){
-        const minPrice = req.query.minPrice;
-        const maxPrice = req.query.maxPrice;
-        const category = req.query.category;
-        const result = ProductModel.filter(
-            minPrice,
-            maxPrice,
-            category
-        );
-        res.status(200).send(result);
+    // Filter products
+    async filterProducts(req, res){
+        try{
+            const minPrice = req.query.minPrice;
+            const maxPrice = req.query.maxPrice;
+            const category = req.query.category;
+            const result = await this.productRepositary.filter(
+                minPrice,
+                maxPrice,
+                category
+            );
+            res.status(200).send(result);
+        }catch(err){
+            console.log(err);
+            res.status(200).send("Something went wrong while filtering products.");
+        }
     }
 
 }
