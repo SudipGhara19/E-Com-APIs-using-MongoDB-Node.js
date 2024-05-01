@@ -1,31 +1,50 @@
 import CartModel from "./cartitems.model.js";
+import CartItemsRepository from "./cartitems.repository.js";
 
 
 export default class CartController {
-
-    add(req, res) {
-        const {productID, quantity} = req.query;
-        const userID = req.userID;
-
-        CartModel.add(productID, userID, quantity);
-        res.status(201).send("Cart is updated.");
+    constructor(){
+        this.cartItemsRespository = new CartItemsRepository();
     }
 
-    get(req, res){
-        const userID = req.userID;
-        const items = CartModel.get(userID);
-        return res.status(200).send(items);
+    async add(req, res) {
+        try{
+            const {productID, quantity} = req.body;
+            const userID = req.userID;
+
+            await this.cartItemsRespository.add(productID, userID, quantity);
+            res.status(201).send("Cart is updated.");
+        }catch{
+            console.log(err);
+            return  res.status(500).send("Something went wrong.");
+        }
     }
 
-    delete(req, res){
-        const userID = req.userID;
-        const productID = req.params.id;
+    async get(req, res){
+        try{
+            const userID = req.userID;
+            const items = await this.cartItemsRespository.get(userID);
+            return res.status(200).send(items);
+        }catch{
+            console.log(err);
+            return  res.status(500).send("Something went wrong.");
+        }
+    }
 
-        const error = CartModel.delete(productID, userID);
-        if(error){
-            return res.status(400).send(error)
-        }else{
-            return res.status(200).send("Cart item is removed");
+    async delete(req, res){
+        try{
+            const userID = req.userID;
+            const cartItemID = req.params.id;
+
+            const isDeleted = await this.cartItemsRespository.delete(userID, cartItemID);
+            if(!isDeleted){
+                return res.status(400).send("cartItem not found")
+            }else{
+                return res.status(200).send("Cart item is removed");
+            }
+        }catch{
+            console.log(err);
+            return  res.status(500).send("Something went wrong.");
         }
     }
 
