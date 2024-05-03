@@ -35,3 +35,8 @@
 {"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/cartItems/66329faf2bc216353467e101 --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/cartItems/66329faf2bc216353467e101 --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
