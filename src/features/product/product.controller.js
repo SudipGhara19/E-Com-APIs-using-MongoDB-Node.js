@@ -89,4 +89,15 @@ export default class ProductController{
         }
     }
 
+    // agerage price based on category
+    async averagePrice(req, res, next){
+        try{
+            const result = await this.productRepositary.averageProductPricePerCategory();
+            res.status(200).send(result);
+        }catch(err){
+            console.log(err);
+            res.status(200).send("Something went wrong while filtering products.");
+        }
+    }
+
 }

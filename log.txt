@@ -40,3 +40,4 @@
 {"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
 {"level":"info","message":"/api/cartItems --- undefined","service":"request-logging"}
+{"level":"info","message":"/api/products/averagePrice --- undefined","service":"request-logging"}
